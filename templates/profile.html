@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<section class="hero has-background-danger">
+        <div class="hero-body">
+                <div class="container">
+                        <div class="columns">
+                                <div class="column">
+                                        <div class="notification">
+                                                <h4 class="title is-4">Did I exceed my limits ? </h4>
+                                                {% if daily_state!= None %}
+                                                <p>
+                                                        You exceed your daily
+                                                        {% for x in daily_state %}
+                                                        {{ x }}
+                                                        {% endfor %}
+                                                        limits
+                                                </p>
+                                                {% endif %}
+
+                                                {% if weekly_state!= None %}
+                                                <h5 class="title is-5">
+                                                        You exceed your weekly
+                                                        {% for x in weekly_state %}
+                                                        {{ x }}
+                                                        {% endfor %}
+                                                        limits
+                                                </h5>
+                                                {% endif %}
+
+                                                {% if monthly_state!= None %}
+                                                <h5 class="title is-5">
+                                                        You exceed your monthly
+                                                        {% for x in monthly_state %}
+                                                        {{ x }}
+                                                        {% endfor %}
+                                                        limits
+                                                </h5>
+                                                {% endif %}
+
+                                                {% if monthly_state == None and weekly_state == None and daily_state == None %}
+                                                <p>You didn't exceed any limit</p>
+                                                {% endif %}
+
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="column">
+                                <div class="notification">
+                                        <h4 class="title is-4"> How much money I have ? </h4>
+                                        {% for x in left %}
+                                        <p> You have {{x}} </p>
+                                        {% endfor %}
+
+                                </div>
+                        </div>
+
+                        <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                        <div class="notification">
+                                                <h4 class="title is-4"> Limits I decided </h1>
+                                                        <table class="table is-bordered">
+                                                                <thead>
+                                                                        <tr>
+                                                                                <th>Category</th>
+                                                                                <th>Daily Limit</th>
+                                                                                <th>Weekly Limit</th>
+                                                                                <th>Monthly Limit</th>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                        {% for x in limits %}
+                                                                        <tr class="th">
+                                                                                {% for e in x %}
+                                                                                <th>{{ e }}</th>
+                                                                                {% endfor %}
+                                                                        </tr>
+                                                                        {% endfor %}
+                                                                </tbody>
+                                                        </table>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</section>
+
+
+{% endblock %}

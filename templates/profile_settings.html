@@ -1,0 +1,220 @@
+{% extends "layout.html" %}
+{% block title %}Edit Your PErsonal Information{% endblock %}
+{% block content %}
+<section class="hero has-background-danger">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Update Profile</h4>
+                        <form action="" method="post" name="add_course">
+                            {{ set_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label"> Name :</label>
+                                </div>
+                                <div class="control">
+                                    {{ set_form.name(required=True, class='input', value= user.name , placeholder='Your Name' ) }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Phone :</label>
+                                </div>
+                                <div class="control">
+                                    {{ set_form.phone(class='input', value= user.phone , placeholder='Your Name') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Account type :</label>
+                                </div>
+                                <div class="control">
+                                    {{ set_form.account_type(class='input', value= user.acc_type , placeholder='Your Name') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Are you sure? :</label>
+                                </div>
+                                <div class="control">
+                                    {{ set_form.sure(class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{ set_form.submit(class='input', )}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <form action="" method="post" name="add_course">
+                            {{ comes_form.csrf_token }}
+                            <h5 class="title is-5"> Your Fixed Incomes</h4>
+
+                                <div class="field is-horizontal">
+                                    <div class="field-label">
+                                        <label class="label"> Salary :</label>
+                                    </div>
+                                    <div class="control">
+                                        {{ comes_form.salary(required=True,  class='input', value= ins.salary) }}
+                                    </div>
+                                </div>
+
+                                <div class="field is-horizontal">
+                                    <div class="field-label">
+                                        <label class="label"> Salary Day :</label>
+                                    </div>
+                                    <div class="control">
+                                        {{ comes_form.salary_day(required=True, class='input', value= ins.salary_day)  }}
+                                    </div>
+                                </div>
+
+
+                                <div class="field is-horizontal">
+                                    <div class="field-label">
+                                        <label class="label">Scholarship :</label>
+                                    </div>
+                                    <div class="control">
+                                        {{ comes_form.scholarship(class='input', value= ins.scholarship) }}
+                                    </div>
+                                </div>
+
+                                <div class="field is-horizontal">
+                                    <div class="field-label">
+                                        <label class="label">Scholarship Day :</label>
+                                    </div>
+                                    <div class="control">
+                                        {{ comes_form.scholarship_day(class='input', value= ins.scholarship_day) }}
+                                    </div>
+                                </div>
+
+                                <div class="field is-horizontal">
+                                    <div class="field-label">
+                                        <label class="label">Others :</label>
+                                    </div>
+                                    <div class="control">
+                                        {{ comes_form.others1(class='input', value= ins.in_other) }}
+                                    </div>
+                                </div>
+
+                                <div class="field is-horizontal">
+                                    <div class="field-label">
+                                        <label class="label">Others' Day :</label>
+                                    </div>
+                                    <div class="control">
+                                        {{ comes_form.others1_day(class='input', value= ins.in_other_day) }}
+                                    </div>
+                                </div>
+
+                                <h5 class="title is-5"> Your Fixed Outcomes</h4>
+
+                                    <div class="field is-horizontal">
+                                        <div class="field-label">
+                                            <label class="label"> Rent :</label>
+                                        </div>
+                                        <div class="control">
+                                            {{ comes_form.rent(required=True, class='input', value= outs.rent) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="field is-horizontal">
+                                        <div class="field-label">
+                                            <label class="label"> Rent Day :</label>
+                                        </div>
+                                        <div class="control">
+                                            {{ comes_form.rent_day(required=True, class='input', value= outs.rent_day) }}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="field is-horizontal">
+                                        <div class="field-label">
+                                            <label class="label">Bills :</label>
+                                        </div>
+                                        <div class="control">
+                                            {{ comes_form.bills(class='input', value= outs.bills) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="field is-horizontal">
+                                        <div class="field-label">
+                                            <label class="label">Bills Day :</label>
+                                        </div>
+                                        <div class="control">
+                                            {{ comes_form.bills_day(class='input', value= outs.bills_day) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="field is-horizontal">
+                                        <div class="field-label">
+                                            <label class="label">Others :</label>
+                                        </div>
+                                        <div class="control">
+                                            {{ comes_form.others2(class='input', value= outs.out_other) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="field is-horizontal">
+                                        <div class="field-label">
+                                            <label class="label">Others' Day :</label>
+                                        </div>
+                                        <div class="control">
+                                            {{ comes_form.others2_day(class='input', value= outs.out_other_day) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="button is-black is-large is-fullwidth">
+                                        <div class="control">
+                                            {{ comes_form.submit1(class='input', )}}
+                                        </div>
+                                    </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Delete My Account</h4>
+                        <form action="" method="post" name="add_course">
+                            {{ delete_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label"> To delete your account, type "DeLetE mY AcCounT" :</label>
+                                </div>
+                                <div class="control">
+                                    {{ delete_form.permission(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{ delete_form.submit3(class='input', )}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

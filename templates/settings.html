@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<section class="hero has-background-danger">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Update Wallet</h4>
+                        <form action="" method="post" name="add_course">
+                            {{ wallet_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Amount of money on your debit cards :</label>
+                                </div>
+                                <div class="control">
+                                    {{ wallet_form.debit(required=True, class='input', value=wallet.debit_card ) }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Amount of money as cash :</label>
+                                </div>
+                                <div class="control">
+                                    {{ wallet_form.cash(required=True, class='input', value=wallet.cash) }}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{wallet_form.submit2(class='input', )}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Update Limits</h4>
+                        <form action="" method="post" name="add_course">
+                            {{ limit_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Limit Category :</label>
+                                </div>
+                                <div class="control">
+                                    {{ limit_form.limit_type(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Daily Limit :</label>
+                                </div>
+                                <div class="control">
+                                    {{ limit_form.daily(class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Weekly Limit :</label>
+                                </div>
+                                <div class="control">
+                                    {{ limit_form.weekly( class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Monthly Limit :</label>
+                                </div>
+                                <div class="control">
+                                    {{ limit_form.monthly(class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{limit_form.submit1(class='input')}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

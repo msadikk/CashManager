@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<section class="hero has-background-danger">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Sign Up</h4>
+                        <form action="" method="post" name="login">
+                            {{ form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Email :</label>
+                                </div>
+                                <div class="control">
+                                    {{ form.email(required=True, autofocus=True, class='input is-large', placeholder='your username') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Password :</label>
+                                </div>
+                                <div class="control">
+                                    {{ form.password(required=True, class='input is-large', placeholder='your password') }}
+                                </div>
+                            </div>
+
+                            <div class="button is-success is-large is-fullwidth">
+                                <div class="control">
+                                {{form.submit(class='input')}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

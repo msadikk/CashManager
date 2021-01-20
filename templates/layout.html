@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cash Manager - {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='mymovies.css') }}" />
+</head>
+
+
+<body>
+  <header>
+    <section class="hero has-background-success">
+      <div class="hero-body">
+        <div class="container">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+            </div>
+            <div class="navbar-menu">
+              <div class="navbar-start">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-medium is-success" href="{{ url_for('home_page') }}"> Home </a>
+                    {% if 'user_id' in session %}
+                    <a class="button is-medium is-success" href="{{ url_for('profile_page') }}"> Profile </a>                  
+                    <a class="button is-medium is-success" href="{{ url_for('expenses_page') }}"> Expenses </a>                  
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    {% if 'user_id' in session %}
+                    <a class="button is-medium is-success" href="{{ url_for('settings_page')}}"> Settings </a>
+                    <a class="button is-medium is-success" href="{{ url_for('profile_settings_page')}}"> Profile Settings </a>
+                    <a class="button is-medium is-success" href="{{ url_for('logout_page')}}"> Log out </a>
+
+                    {% else %}
+                    <a class="button is-medium is-success" href="{{ url_for('register_page')}}"> Sign up </a>
+                    <a class="button is-medium is-success" href="{{ url_for('login_page')}}"> Log in </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </header> 
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="content">
+      <small>&copy; 2020, Sadık Mahmut</small>
+    </div>
+  </footer>
+
+</body>
+
+</html>

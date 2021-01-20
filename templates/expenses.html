@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% block title %}Expenses{% endblock %}
+{% block content %}
+<section class="hero has-background-danger">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Add Expense</h4>
+                        <form action="" method="post" name="add_course">
+                            {{ exp_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Expense Date :</label>
+                                </div>
+                                <div class="control">
+                                    {{ exp_form.date(required=True, class='input', placeholder='YYYY-MM-DD') }}
+                                </div>
+                            </div>
+                            <p>Please choose : </p>
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Expense Category :</label>
+                                </div>
+                                <div class="control">
+                                    {{ exp_form.expense_type(required=True, autofocus=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Amount :</label>
+                                </div>
+                                <div class="control">
+                                    {{ exp_form.amount(required=True, class='input') }}
+                                </div>
+                            </div>
+                            <p>Please choose : </p>
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Payment Method :</label>
+                                </div>
+                                <div class="control">
+                                    {{ exp_form.payment(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="button is-success is-large is-fullwidth">
+                                <div class="control">
+                                    {{exp_form.submit1(class='input', )}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4"> Expense History with Categories </h1>
+                            {% for a in categorised %}
+                            <p> You made {{ a['count(*)'] }} expenses in {{ a['expense_type'] }} category.</p>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4"> Your All Expenses</h1>
+                            <form method="POST" action="/expenses">
+                                <table class="table is-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Expense Category</th>
+                                            <th>Amount</th>
+                                            <th>Payment Method</th>
+                                            <th>Delete Expense</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for exp in expenses %}
+                                        <tr class="th">
+                                            <th>{{ exp['date'] }}</th>
+                                            <th>{{ exp['expense_type'] }}</th>
+                                            <th>{{ exp['amount'] }}</th>
+                                            <th>{{ exp['payment'] }}</th>
+                                            <th><input type="checkbox" value={{ exp['expense_id'] }} name="deletebox"></th>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="button is-success is-large is-fullwidth">
+                                    <div class="control">
+                                        <input type="submit" value="delete">
+                                    </div>
+                                </div>
+                                
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
